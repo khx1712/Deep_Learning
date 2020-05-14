@@ -1,29 +1,30 @@
 import sys, os
 sys.path.append(os.pardir)  # 현재 폴더의 부모 폴더에서 찾아서 loading
 import numpy as np
-from KNN.dataset.mnist import load_mnist
+from dataset.mnist import load_mnist
 from KNN.knn import KNN
 
 
 def hand_craft(old_X):
-    new_X = list()
-    for n in range(old_X.shape[0]):
-        temp = list()
-        for i in range(0, old_X[n].shape[0], 4):
-            sum = 0
+    new_X = list()  # 변환한 data를 담을 list를 초기화
+    for n in range(old_X.shape[0]):  # data의 개수 만큼 반복한다.
+        temp = list()  # 변환한 data를 담을 list를 초기화
+        for i in range(0, old_X[n].shape[0], 4):  # feature 을 4개씩 나눠준다
+            sum = 0  # 값들의 합을 구한다
             for j in range(4):
-                sum += old_X[n][i+j]
+                sum += old_X[n][i + j]  # 실수 형태의 data를 실수로 받기위해 그대로 더한다
             temp.append(sum)
         new_X.append(temp)
-    return np.array(new_X)
+    return np.array(new_X)  # list 를 numpy 형식으로 바꿔준다
 
 (x_train, t_train), (x_test, t_test) = \
     load_mnist(normalize=True, flatten=True)
 
 label_name = np.array(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
 
-hc_x_train = hand_craft(x_train)
-hc_x_test = hand_craft(x_test)
+hc_x_train = hand_craft(x_train)  # 기존의 data 를 넣어 feature 이 변화된 형태의 data 를 받는다
+hc_x_test = hand_craft(x_test)  # 기존의 data 를 넣어 feature 이 변화된 형태의 data 를 받는다
+
 
 
 K_list = [3]  # feature 가 많기 때문에 시간이 오래걸려 K의 값을 3만 시뮬레이션 해본다 넣는다.

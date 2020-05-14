@@ -1,20 +1,22 @@
 import sys, os
 sys.path.append(os.pardir)  # 현재 폴더의 부모 폴더에서 찾아서 loading
 import numpy as np
-from KNN.dataset.mnist import load_mnist
+from dataset.mnist import load_mnist
 from PIL import Image
 from KNN.knn import KNN
 
 
-def img_show(img):
+def img_show(img):  # 이미지를 보여주는 함수
     pil_img = Image.fromarray(np.uint8(img))
     pil_img.show()
 
 
+# mnist data를 load 하는 함수
 (x_train, t_train), (x_test, t_test) = \
     load_mnist(normalize=True, flatten=True)
 
 label_name = np.array(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+
 '''
 image = x_train[0]
 label = t_train[0]
@@ -29,8 +31,8 @@ img_show(image)
 '''
 
 K_list = [3]  # feature 가 많기 때문에 시간이 오래걸려 K의 값을 3만 시뮬레이션 해본다 넣는다.
-size = 50
-sample = np.random.randint(0, t_test.shape[0], size)
+size = 50   # 몇개의 data 를 test 할 것 인지 정한다
+sample = np.random.randint(0, t_test.shape[0], size)  # 0부터 10000까지의 숫자중에 랜덤하게 size 만큼의 숫자를 뽑는다.
 
 for K in K_list:  # list 에 있는 K값 모두에 대해서 test 를 진행한다
 

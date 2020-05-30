@@ -29,5 +29,5 @@ X_test = X[for_test]  # for_test 에 해당하는 지점의 값들을 잘라서 
 y_mul_test = y_oneHot[for_test]  # for_test 에 해당하는 지점의 값들을 잘라서 list 로 만든다
 
 LR_iris_mul = LR.LogisticRegression(X_train, y_mul_train, y_name)  # X, y, target 값을 argument 로 넘겨 초기화 시킨 class 를 생성한다.
-LR_iris_mul.learn(500, 0.001)  # epoch, learning rate 값을 argument 로 넘겨 class 내부에 있는 train data 로 학습시킽다.
+LR_iris_mul.learn(200, 0.0005)  # epoch, learning rate 값을 argument 로 넘겨 class 내부에 있는 train data 로 학습시킽다.
 LR_iris_mul.predict(X_test, y_mul_test)  # X test, y test 값을 argument 로 넘겨 몇 퍼센트 적중률을 가지는지 test 한다.

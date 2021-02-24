@@ -30,6 +30,6 @@ input_size = 4  # feature 의 개수 만큼 input layer 의 unit 의 개수를 �
 hidden_size = 4 # hidden layer 에 몇개의 unit을 만들어줄껀지 정해준다.
 output_size = 3  # 마지막에 softmax 를 통해 확률값을 구해야 하므로 target 의 개수로 정의한다.
 NeuralNet_iris = NN.TwoLayerNet(input_size, hidden_size, output_size)  # 위에서 정한 각 layer 의 unit 의 개수를 입력하여 class 를 생성한다.
-NeuralNet_iris.learn(0.015, 15000, 10)  # learning rate/epoch/batch size 를 입력하여 학습을 진행한다.
+NeuralNet_iris.learn(0.01, 1000, 10)  # learning rate/epoch/batch size 를 입력하여 학습을 진행한다.
 print('Test Accuracy = ', NeuralNet_iris.accuracy(X_test, y_test))  # 학습을 모두 마치고 test data 를 입력하여 accuracy 를 통해 얼마나 학습이 잘됬는지 확인한다.
 
